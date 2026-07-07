@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Desk Data Center</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
     <h1>Sistema Help Desk Data Center</h1>
 </header>
 
-<nav>
-    <a href="index.html">Inicio</a> |
-    <a href="reportar.html">Reportar Incidente</a> |
+<nav class="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="reportar.html">Reportar Incidente</a>
     <a href="tickets.html">Tickets</a>
 </nav>
 
 <main>
 
-    <section>
+    <section class="card">
 
         <h2>Listado de Tickets</h2>
 
-        <table border="1">
+        <table>
 
             <thead>
                 <tr>
@@ -39,7 +41,7 @@
                     <td>001</td>
                     <td>Servidor sin respuesta</td>
                     <td>Hardware</td>
-                    <td>Alta</td>
+                    <td><span class="badge-alta">Alta</span></td>
                     <td>Pendiente</td>
                 </tr>
 
@@ -47,7 +49,7 @@
                     <td>002</td>
                     <td>Fallo de conexión DNS</td>
                     <td>Red</td>
-                    <td>Media</td>
+                    <td><span class="badge-media">Media</span></td>
                     <td>En proceso</td>
                 </tr>
 
@@ -55,7 +57,7 @@
                     <td>003</td>
                     <td>Error en aplicación web</td>
                     <td>Software</td>
-                    <td>Baja</td>
+                    <td><span class="badge-baja">Baja</span></td>
                     <td>Resuelto</td>
                 </tr>
             </tbody>
