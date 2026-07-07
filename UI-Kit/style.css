@@ -1,3 +1,5 @@
+/* Archivo CSS para la biblioteca 
+de componentes UI Kit */
 :root{
     --color-primario:#1565C0;
     --color-secundario:#607D8B;
@@ -14,7 +16,8 @@
     padding:0;
     box-sizing:border-box;
 }
-
+ /* Estilos generales para el cuerpo, 
+ encabezado y pie de página */
 body{
     font-family:Arial, Helvetica, sans-serif;
     background-color:var(--color-fondo);
@@ -34,6 +37,8 @@ footer{
     color:#666;
 }
 
+/* Estilos para botones, formularios, 
+tarjetas y badges */
 button{
     font-size:16px;
     padding:12px 24px;
@@ -83,6 +88,7 @@ select:focus{
     font-weight: bold;
 }
 
+/* Estilos específicos para cada tipo de badge */
 .badge-alta{
     background-color: var(--color-error);
 }
