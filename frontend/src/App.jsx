@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
   const [refreshTickets, setRefreshTickets] = useState(0);
 
-  const handleTicketCreated = () => {
+  const handleTicketUpdated = () => {
     setRefreshTickets((current) => current + 1);
   };
 
@@ -17,11 +17,14 @@ function App() {
       <Navbar />
 
       <main className="main-content">
-        <Dashboard />
+        <Dashboard refreshTickets={refreshTickets} />
 
-        <IncidentForm onTicketCreated={handleTicketCreated} />
+        <IncidentForm onTicketCreated={handleTicketUpdated} />
 
-        <TicketList refreshTickets={refreshTickets} />
+        <TicketList
+          refreshTickets={refreshTickets}
+          onTicketUpdated={handleTicketUpdated}
+        />
       </main>
     </div>
   );

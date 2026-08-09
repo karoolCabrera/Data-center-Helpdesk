@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTickets, updateTicket, deleteTicket } from "../services/api";
 
-function TicketList({ refreshTickets }) {
+function TicketList({ refreshTickets, onTicketUpdated }) {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -26,21 +26,25 @@ function TicketList({ refreshTickets }) {
   }, [refreshTickets]);
 
   const cambiarEstado = async (ticket, estado) => {
-  try {
-    await updateTicket(ticket.id, {
-      titulo: ticket.titulo,
-      descripcion: ticket.descripcion,
-      categoria: ticket.categoria,
-      prioridad: ticket.prioridad,
-      estado: estado,
-    });
+    try {
+      await updateTicket(ticket.id, {
+        titulo: ticket.titulo,
+        descripcion: ticket.descripcion,
+        categoria: ticket.categoria,
+        prioridad: ticket.prioridad,
+        estado: estado,
+      });
 
-    await cargarTickets();
-  } catch (error) {
-    console.error(error);
-    alert("No se pudo actualizar el estado.");
-  }
-};
+      await cargarTickets();
+
+      if (onTicketUpdated) {
+        onTicketUpdated();
+      }
+    } catch (error) {
+      console.error(error);
+      alert("No se pudo actualizar el estado.");
+    }
+  };
 
   const eliminarTicket = async (id) => {
     const confirmar = window.confirm(
@@ -52,6 +56,10 @@ function TicketList({ refreshTickets }) {
     try {
       await deleteTicket(id);
       await cargarTickets();
+
+      if (onTicketUpdated) {
+        onTicketUpdated();
+      }
     } catch (error) {
       console.error(error);
       alert("No se pudo eliminar el ticket.");
